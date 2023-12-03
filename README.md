@@ -1,75 +1,40 @@
-# Nuxt 3 Minimal Starter
+# Nuxt 3 中后台管理系统起手模板
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+点击查看 [Nuxt 3 文档](https://nuxt.com/docs/getting-started/introduction) 了解更多。
 
-## Setup
-
-Make sure to install the dependencies:
+## 开始
+安装依赖:
 
 ```bash
-# npm
-npm install
-
-# pnpm
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+## 代码提交规范
 
-Start the development server on `http://localhost:3000`:
+检验并格式化你的提交区代码
+```bash
+pnpm run commit
+```
+
+## 开发环境
+`http://localhost:3000`:
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
 pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+## 生产环境
 
-Build the application for production:
+构建生产应用程序:
 
 ```bash
-# npm
-npm run build
-
-# pnpm
 pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+本地预览生产版本
 
 ```bash
-# npm
-npm run preview
-
-# pnpm
 pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+查看 [部署文档](https://nuxt.com/docs/getting-started/deployment) 获取更多信息。
