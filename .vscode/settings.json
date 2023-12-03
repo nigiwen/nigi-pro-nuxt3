@@ -14,7 +14,8 @@
     "vitejs",
     "unplugin",
     "pnpm",
-    "nuxt"
+    "nuxt",
+    "nuxtjs"
   ],
   "files.associations": {
     "*.css": "postcss"
