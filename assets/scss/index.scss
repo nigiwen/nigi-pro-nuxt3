@@ -1,0 +1,12 @@
+html,
+body,
+#__nuxt {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  font-weight: 400;
+  color: var(--el-color-primary);
+}

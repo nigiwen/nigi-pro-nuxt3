@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     '@unocss/nuxt',
     '@pinia/nuxt',
     '@vite-pwa/nuxt',
+    '@element-plus/nuxt',
   ],
 
   experimental: {
@@ -20,7 +21,23 @@ export default defineNuxtConfig({
 
   css: [
     '@unocss/reset/tailwind.css',
+    '~/assets/scss/index.scss',
   ],
+
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "@/assets/scss/element/index.scss" as element;`,
+        },
+      },
+    },
+  },
+
+  elementPlus: {
+    icon: 'ElIcon',
+    importStyle: 'scss',
+  },
 
   nitro: {
     esbuild: {

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import { appName } from '~/constants'
 
 useHead({
@@ -7,18 +8,14 @@ useHead({
 </script>
 
 <template>
-  <VitePwaManifest />
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <el-config-provider :locale="zhCn">
+    <VitePwaManifest />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </el-config-provider>
 </template>
 
 <style>
-html,
-body,
-#__nuxt {
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-}
+
 </style>
