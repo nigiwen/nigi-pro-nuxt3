@@ -1,14 +1,14 @@
 <script setup lang='ts'>
-
+function handleMessage() {
+  message.info('This is a normal message')
+}
 </script>
 
 <template>
-  <el-button type="primary" :icon="ElIconSearch">
-    这是我的默认布局
-  </el-button>
-  <el-date-picker
-    type="date"
-  />
+  <a-button @click="handleMessage">
+    button
+  </a-button>
+  <a-date-picker />
   <ul>
     <li>
       i

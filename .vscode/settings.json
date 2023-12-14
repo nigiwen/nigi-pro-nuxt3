@@ -15,7 +15,8 @@
     "unplugin",
     "pnpm",
     "nuxt",
-    "nuxtjs"
+    "nuxtjs",
+    "antd"
   ],
   "files.associations": {
     "*.css": "postcss"

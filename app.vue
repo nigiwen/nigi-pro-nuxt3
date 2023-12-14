@@ -1,6 +1,10 @@
 <script setup lang="ts">
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
+import zhCN from 'ant-design-vue/es/locale/zh_CN'
+import dayjs from 'dayjs'
 import { appName } from '~/constants'
+import 'dayjs/locale/zh-cn'
+
+dayjs.locale('zh-cn')
 
 useHead({
   title: appName,
@@ -8,12 +12,12 @@ useHead({
 </script>
 
 <template>
-  <el-config-provider :locale="zhCn">
-    <VitePwaManifest />
+  <VitePwaManifest />
+  <a-config-provider :locale="zhCN">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-  </el-config-provider>
+  </a-config-provider>
 </template>
 
 <style>
