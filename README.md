@@ -3,6 +3,7 @@
 点击查看 [Nuxt 3 文档](https://nuxt.com/docs/getting-started/introduction) 了解更多。
 
 ## 开始
+
 安装依赖:
 
 ```bash
@@ -12,11 +13,13 @@ pnpm install
 ## 代码提交规范
 
 检验并格式化你的提交区代码
+
 ```bash
 pnpm run commit
 ```
 
 ## 开发环境
+
 `http://localhost:3000`:
 
 ```bash
