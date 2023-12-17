@@ -29,9 +29,9 @@
   "editor.formatOnSave": false,
   // Auto fix
   "editor.codeActionsOnSave": {
-    "source.fixAll": false,
-    "source.fixAll.eslint": true, // this allows ESLint to auto fix on save
-    "source.organizeImports": false
+    "source.fixAll": "never",
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
   },
   // Silent the stylistic rules in you IDE, but still auto fix them
   "eslint.rules.customizations": [

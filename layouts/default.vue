@@ -19,7 +19,7 @@ function onTab(id: number) {
       <div class="logo" gap-1>
         <img src="/nuxt.svg" alt="log" h-8 w-8>
         <h2 v-if="!collapsed" color="var(--site-text-color)" whitespace-nowrap text-5 font-700>
-          Nigi Pro Admin
+          Nigi Pro
         </h2>
       </div>
       <a-menu v-model:selectedKeys="selectedKeys" theme="light" mode="inline" border-0>
@@ -69,12 +69,10 @@ function onTab(id: number) {
         </div>
       </a-layout-header>
       <a-layout-content bg="#ffffff" m="t-6 x-4 b-0" min-h-70 p-6>
-        Content<a-button type="primary">
-          Primary Button
-        </a-button>
+        <slot />
       </a-layout-content>
       <a-layout-footer p-x-12 p-y-3 text-center>
-        Nigi Pro Admin ©2024 Created by wen403
+        Nigi Pro ©2024 Created by wen403
       </a-layout-footer>
     </a-layout>
   </a-layout>
