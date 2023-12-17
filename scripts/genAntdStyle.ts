@@ -1,5 +1,5 @@
 import { extractStyle } from 'ant-design-vue/lib/_util/static-style-extract'
-import { ConfigProvider } from 'ant-design-vue/lib'
+import { ConfigProvider } from 'ant-design-vue'
 import { h } from 'vue'
 import fsExtra from 'fs-extra'
 

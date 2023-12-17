@@ -21,6 +21,7 @@ export default defineNuxtConfig({
 
   css: [
     '@unocss/reset/tailwind-compat.css',
+    'ant-design-vue/dist/reset.css',
     '~/assets/scss/index.scss',
   ],
 
