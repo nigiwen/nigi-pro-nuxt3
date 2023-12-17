@@ -12,8 +12,8 @@ useHead({
 </script>
 
 <template>
-  <VitePwaManifest />
   <a-config-provider :locale="zhCN">
+    <VitePwaManifest />
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
