@@ -127,7 +127,7 @@ function onTab(id: number) {
           -19px 14px 0 0 $active-color;
       }
 
-      &::after {
+      &:after {
         display: none;
       }
     }
@@ -139,7 +139,7 @@ function onTab(id: number) {
           0 0 0 0;
       }
 
-      &::before {
+      &:before {
         display: none;
       }
     }
@@ -157,7 +157,7 @@ function onTab(id: number) {
   .not-selected {
     color: #a0a0a0;
   }
-  .tab-selected::before {
+  .tab-selected:before {
     content: '';
     position: absolute;
     left: -6px;
@@ -168,7 +168,7 @@ function onTab(id: number) {
     background-color: $active-color;
     transform: skewX(-15deg);
   }
-  .tab-selected::after {
+  .tab-selected:after {
     content: '';
     position: absolute;
     right: -6px;
@@ -180,7 +180,7 @@ function onTab(id: number) {
     transform: skewX(15deg);
   }
 
-  .not-selected::before {
+  .not-selected:before {
     content: '';
     position: absolute;
     left: 6px;
@@ -191,7 +191,7 @@ function onTab(id: number) {
     border-bottom-left-radius: 12px;
     transform: skewX(15deg);
   }
-  .not-selected::after {
+  .not-selected:after {
     content: '';
     position: absolute;
     right: 6px;

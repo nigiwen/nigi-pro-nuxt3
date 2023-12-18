@@ -20,7 +20,6 @@
   },
   "devDependencies": {
     "@ant-design-vue/nuxt": "^1.2.0",
-    "@ant-design/icons-vue": "^7.0.1",
     "@antfu/eslint-config": "^2.4.5",
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
@@ -32,7 +31,6 @@
     "@unocss/nuxt": "^0.58.0",
     "@vite-pwa/nuxt": "^0.3.3",
     "@vueuse/nuxt": "^10.6.1",
-    "ant-design-vue": "^4.0.7",
     "commitizen": "^4.3.0",
     "consola": "^3.2.3",
     "cross-env": "^7.0.3",

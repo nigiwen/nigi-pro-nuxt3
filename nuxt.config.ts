@@ -25,30 +25,6 @@ export default defineNuxtConfig({
     '~/assets/scss/index.scss',
   ],
 
-  vite: {
-    resolve: {
-      alias: {
-        'ant-design-vue/dist': 'ant-design-vue/dist',
-        'ant-design-vue/es': 'ant-design-vue/es',
-        'ant-design-vue/lib': 'ant-design-vue/es',
-        'ant-design-vue': 'ant-design-vue/es',
-      },
-    },
-  },
-
-  nitro: {
-    esbuild: {
-      options: {
-        target: 'esnext',
-      },
-    },
-    prerender: {
-      crawlLinks: false,
-      routes: ['/'],
-      ignore: ['/hi'],
-    },
-  },
-
   app: {
     head: {
       viewport: 'width=device-width,initial-scale=1',
