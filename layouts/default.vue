@@ -88,7 +88,7 @@ function siderTrigger() {
         <div>
           <div flex-center gap-2>
             <div text-base font-450>
-              Nigi
+              Nigi Wen
             </div>
             <a-avatar bg="#1677FF" size="large">
               <template #icon>
