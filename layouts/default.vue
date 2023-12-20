@@ -44,7 +44,7 @@ function siderTrigger() {
 </script>
 
 <template>
-  <a-layout id="classic-layout" flex-row min-h="100vh">
+  <a-layout id="classic-layout" flex-row min-h="100vh" min-w="200">
     <a-layout-sider v-model:collapsed="collapsed" collapsible bg="#ffffff" :trigger="siderTrigger()">
       <div h-15 flex-center gap-1>
         <img src="/nuxt.svg" alt="log" h-8 w-8>
