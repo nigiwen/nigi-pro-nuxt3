@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import { useDraggable } from 'vue-draggable-plus'
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue'
+
 const selectedKeys = ref<string[]>(['1'])
 const [collapsed] = useToggle()
 
@@ -7,16 +10,43 @@ const tabList = ref([
   { id: 2, label: '系统管理' },
   { id: 3, label: '菜单管理' },
 ])
+const tabListRef = ref<HTMLElement>()
+useDraggable(tabListRef, tabList, {
+  animation: 150,
+  dragClass: 'tabs-sortable-drag',
+})
+
 const activeTab = ref(3)
 function onTab(id: number) {
   activeTab.value = id
 }
+
+function siderTrigger() {
+  return h(
+    'div',
+    {
+      class: 'sider-trigger-container',
+      style: {
+        background: '#fff3f3',
+        color: 'rgba(0, 0, 0, 0.88)',
+        fontSize: '18px',
+      },
+    },
+    {
+      default: () => [
+        collapsed.value
+          ? h(MenuUnfoldOutlined, { class: 'sider-trigger' })
+          : h(MenuFoldOutlined, { class: 'sider-trigger' }),
+      ],
+    },
+  )
+}
 </script>
 
 <template>
-  <a-layout id="classic-layout" min-h="100vh">
-    <a-layout-sider v-model:collapsed="collapsed" collapsible bg="#ffffff">
-      <div class="logo" gap-1>
+  <a-layout id="classic-layout" flex-row min-h="100vh">
+    <a-layout-sider v-model:collapsed="collapsed" collapsible bg="#ffffff" :trigger="siderTrigger()">
+      <div h-15 flex-center gap-1>
         <img src="/nuxt.svg" alt="log" h-8 w-8>
         <h2 v-if="!collapsed" color="var(--site-text-color)" whitespace-nowrap text-5 font-700>
           Nigi Pro
@@ -39,8 +69,8 @@ function onTab(id: number) {
     </a-layout-sider>
     <a-layout>
       <a-layout-header bg="#ffffff" h-15 flex-y-center justify-between px-4>
-        <div flex-auto>
-          <div class="tab-list">
+        <div w="7/10">
+          <div ref="tabListRef" class="tab-list">
             <div
               v-for="tab in tabList"
               :key="tab.id"
@@ -80,128 +110,150 @@ function onTab(id: number) {
 
 <style scoped lang="scss">
 #classic-layout {
-  :deep(.ant-layout-sider-trigger) {
-    background-color: #fffafa !important;
-    .anticon {
-      color: rgba(0, 0, 0, 0.88);
+  // 菜单缩放按钮
+  .sider-trigger-container {
+    &:hover .sider-trigger {
+      color: #1890ff;
+    }
+    .sider-trigger {
+      font-size: 18px;
+      line-height: 64px;
+      padding: 0 24px;
+      cursor: pointer;
+      transition: color 0.3s;
     }
   }
-  .logo {
+
+  // 页签
+  .tab-list {
+    $tab-height: 38px;
+    $active-color: #e6f4ff;
+    $default-color: #ffffff;
+
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 32px;
-    margin: 16px 0;
-  }
-}
-</style>
-
-<style scoped lang="scss">
-.tab-list {
-  $tab-height: 38px;
-  $active-color: #e6f4ff;
-  $default-color: #ffffff;
-
-  display: flex;
-  position: relative;
-  z-index: 2;
-  border-radius: 12px 12px 0 0;
-  background-color: $default-color;
-  overflow: hidden;
-  transform: translateY(11px);
-
-  .tab-item {
-    padding: 0 20px;
-    min-width: 100px;
-    height: $tab-height;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
-    cursor: pointer;
-
-    &:last-child {
-      &.tab-selected {
-        box-shadow:
-          0 0 0 0,
-          -19px 14px 0 0 $active-color;
-      }
-
-      &:after {
-        display: none;
-      }
-    }
-
-    &:first-child {
-      &.tab-selected {
-        box-shadow:
-          19px 14px 0 0 $active-color,
-          0 0 0 0;
-      }
-
-      &:before {
-        display: none;
-      }
-    }
-  }
-
-  .tab-selected {
-    opacity: 1;
-    background: $active-color;
+    z-index: 2;
     border-radius: 12px 12px 0 0;
-    color: #1677ff;
-    box-shadow:
-      19px 14px 0 $active-color,
-      -19px 14px 0 0 $active-color;
-  }
-  .not-selected {
-    color: #a0a0a0;
-  }
-  .tab-selected:before {
-    content: '';
-    position: absolute;
-    left: -6px;
-    bottom: 0;
-    width: 12px;
-    height: $tab-height;
-    border-top-left-radius: 12px;
-    background-color: $active-color;
-    transform: skewX(-15deg);
-  }
-  .tab-selected:after {
-    content: '';
-    position: absolute;
-    right: -6px;
-    bottom: 0;
-    width: 12px;
-    height: $tab-height;
-    border-top-right-radius: 12px;
-    background-color: $active-color;
-    transform: skewX(15deg);
-  }
+    background-color: $default-color;
+    overflow: hidden;
+    transform: translateY(11px);
 
-  .not-selected:before {
-    content: '';
-    position: absolute;
-    left: 6px;
-    bottom: 0;
-    width: 12px;
-    height: $tab-height;
-    background: $default-color;
-    border-bottom-left-radius: 12px;
-    transform: skewX(15deg);
-  }
-  .not-selected:after {
-    content: '';
-    position: absolute;
-    right: 6px;
-    bottom: 0;
-    width: 12px;
-    height: $tab-height;
-    background: $default-color;
-    border-bottom-right-radius: 12px;
-    transform: skewX(-15deg);
-    z-index: 1;
+    // 页签样式
+    .tab-item {
+      padding: 0 20px;
+      min-width: 100px;
+      height: $tab-height;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      cursor: pointer;
+
+      &:last-child {
+        &.tab-selected {
+          box-shadow:
+            0 0 0 0,
+            -19px 14px 0 0 $active-color;
+        }
+
+        &:after {
+          display: none;
+        }
+      }
+
+      &:first-child {
+        &.tab-selected {
+          box-shadow:
+            19px 14px 0 0 $active-color,
+            0 0 0 0;
+        }
+
+        &:before {
+          display: none;
+        }
+      }
+    }
+
+    // 选中的页签样式
+    .tab-selected {
+      z-index: -1;
+      opacity: 1;
+      background: $active-color;
+      border-radius: 12px 12px 0 0;
+      color: #1677ff;
+      box-shadow:
+        19px 14px 0 $active-color,
+        -19px 14px 0 0 $active-color;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: -6px;
+        bottom: 0;
+        width: 12px;
+        height: $tab-height;
+        border-top-left-radius: 12px;
+        background-color: $active-color;
+        transform: skewX(-15deg);
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: -6px;
+        bottom: 0;
+        width: 12px;
+        height: $tab-height;
+        border-top-right-radius: 12px;
+        background-color: $active-color;
+        transform: skewX(15deg);
+      }
+    }
+
+    // 未选中的页签样式
+    .not-selected {
+      color: #a0a0a0;
+      &::before {
+        content: '';
+        position: absolute;
+        left: 6px;
+        bottom: 0;
+        width: 12px;
+        height: $tab-height;
+        background: $default-color;
+        border-bottom-left-radius: 12px;
+        transform: skewX(15deg);
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: 6px;
+        bottom: 0;
+        width: 12px;
+        height: $tab-height;
+        background: $default-color;
+        border-bottom-right-radius: 12px;
+        transform: skewX(-15deg);
+        z-index: 1;
+      }
+    }
+
+    // 拖拽出来的页签样式
+    .tabs-sortable-drag {
+      background-color: #ffffff !important;
+      border-radius: 6px !important;
+      box-shadow: initial !important;
+      &::after {
+        display: none !important;
+      }
+      &::before {
+        display: none !important;
+      }
+      &.tab-selected {
+        background-color: $active-color !important;
+      }
+    }
   }
 }
 </style>
