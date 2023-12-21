@@ -74,6 +74,9 @@ devDependencies:
   lint-staged:
     specifier: ^15.2.0
     version: 15.2.0
+  nanoid:
+    specifier: ^5.0.4
+    version: 5.0.4
   npm-run-all:
     specifier: ^4.1.5
     version: 4.1.5
@@ -8444,6 +8447,12 @@ packages:
   /nanoid@4.0.2:
     resolution: {integrity: sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==, tarball: https://registry.npmmirror.com/nanoid/-/nanoid-4.0.2.tgz}
     engines: {node: ^14 || ^16 || >=18}
+    hasBin: true
+    dev: true
+
+  /nanoid@5.0.4:
+    resolution: {integrity: sha512-vAjmBf13gsmhXSgBrtIclinISzFFy22WwCYoyilZlsrRXNIHSwgFQ1bEdjRwMT3aoadeIF6HMuDRlOxzfXV8ig==, tarball: https://registry.npmmirror.com/nanoid/-/nanoid-5.0.4.tgz}
+    engines: {node: ^18 || >=20}
     hasBin: true
     dev: true
 
