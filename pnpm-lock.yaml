@@ -36,8 +36,8 @@ devDependencies:
     specifier: ^0.58.0
     version: 0.58.0(postcss@8.4.32)(rollup@2.79.1)(vite@5.0.10)(webpack@5.89.0)
   '@vite-pwa/nuxt':
-    specifier: ^0.3.5
-    version: 0.3.5(rollup@2.79.1)(vite@5.0.10)(workbox-build@7.0.0)(workbox-window@7.0.0)
+    specifier: ^0.3.6
+    version: 0.3.6(rollup@2.79.1)(vite@5.0.10)(workbox-build@7.0.0)(workbox-window@7.0.0)
   '@vueuse/nuxt':
     specifier: ^10.7.0
     version: 10.7.0(nuxt@3.8.2)(rollup@2.79.1)(vue@3.3.13)
@@ -83,9 +83,15 @@ devDependencies:
   pinia:
     specifier: ^2.1.7
     version: 2.1.7(typescript@5.3.3)(vue@3.3.13)
+  pnpm:
+    specifier: ^8.12.1
+    version: 8.12.1
   sass:
     specifier: ^1.69.5
     version: 1.69.5
+  taze:
+    specifier: ^0.13.0
+    version: 0.13.0
   typescript:
     specifier: ^5.3.3
     version: 5.3.3
@@ -234,6 +240,11 @@ packages:
     resolution: {integrity: sha512-A3zWY9VeTPnxlMiZtsGHw2lSd3ghwvL8s9RiGOtqvDxhhFfZ781ynsGBa/iUnDJ5zBrmTFQrJDud3TGgRISaxw==, tarball: https://registry.npmmirror.com/@antfu/install-pkg/-/install-pkg-0.3.1.tgz}
     dependencies:
       execa: 8.0.1
+    dev: true
+
+  /@antfu/ni@0.21.12:
+    resolution: {integrity: sha512-2aDL3WUv8hMJb2L3r/PIQWsTLyq7RQr3v9xD16fiz6O8ys1xEyLhhTOv8gxtZvJiTzjTF5pHoArvRdesGL1DMQ==, tarball: https://registry.npmmirror.com/@antfu/ni/-/ni-0.21.12.tgz}
+    hasBin: true
     dev: true
 
   /@antfu/utils@0.7.7:
@@ -2343,6 +2354,20 @@ packages:
       - supports-color
     dev: true
 
+  /@npmcli/config@8.0.3:
+    resolution: {integrity: sha512-rqRX7/UORvm2YRImY67kyfwD9rpi5+KXXb1j/cpTUKRcUqvpJ9/PMMc7Vv57JVqmrFj8siBBFEmXI3Gg7/TonQ==, tarball: https://registry.npmmirror.com/@npmcli/config/-/config-8.0.3.tgz}
+    engines: {node: ^16.14.0 || >=18.0.0}
+    dependencies:
+      '@npmcli/map-workspaces': 3.0.4
+      ci-info: 4.0.0
+      ini: 4.1.1
+      nopt: 7.2.0
+      proc-log: 3.0.0
+      read-package-json-fast: 3.0.2
+      semver: 7.5.4
+      walk-up-path: 3.0.1
+    dev: true
+
   /@npmcli/fs@3.1.0:
     resolution: {integrity: sha512-7kZUAaLscfgbwBQRbvdMYaZOWyMEcPTH/tJjnyAWJ/dvvs9Ef+CERx/qJb9GExJpl1qipaDGn7KqHnFGGixd0w==, tarball: https://registry.npmmirror.com/@npmcli/fs/-/fs-3.1.0.tgz}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
@@ -2373,6 +2398,21 @@ packages:
     dependencies:
       npm-bundled: 3.0.0
       npm-normalize-package-bin: 3.0.1
+    dev: true
+
+  /@npmcli/map-workspaces@3.0.4:
+    resolution: {integrity: sha512-Z0TbvXkRbacjFFLpVpV0e2mheCh+WzQpcqL+4xp49uNJOxOnIAPZyXtUxZ5Qn3QBTGKA11Exjd9a5411rBrhDg==, tarball: https://registry.npmmirror.com/@npmcli/map-workspaces/-/map-workspaces-3.0.4.tgz}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
+    dependencies:
+      '@npmcli/name-from-folder': 2.0.0
+      glob: 10.3.10
+      minimatch: 9.0.3
+      read-package-json-fast: 3.0.2
+    dev: true
+
+  /@npmcli/name-from-folder@2.0.0:
+    resolution: {integrity: sha512-pwK+BfEBZJbKdNYpHHRTNBwBoqrN/iIMO0AiGvYsp3Hoaq0WbgGSWQR6SCldZovoDpY3yje5lkFUe6gsDgJ2vg==, tarball: https://registry.npmmirror.com/@npmcli/name-from-folder/-/name-from-folder-2.0.0.tgz}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dev: true
 
   /@npmcli/node-gyp@3.0.0:
@@ -2475,7 +2515,7 @@ packages:
       scule: 1.1.1
       semver: 7.5.4
       simple-git: 3.21.0
-      sirv: 2.0.3
+      sirv: 2.0.4
       unimport: 3.6.1(rollup@2.79.1)
       vite: 5.0.10(@types/node@20.10.5)(sass@1.69.5)
       vite-plugin-inspect: 0.8.1(@nuxt/kit@3.8.2)(rollup@2.79.1)(vite@5.0.10)
@@ -2733,6 +2773,7 @@ packages:
     dependencies:
       is-glob: 4.0.3
       micromatch: 4.0.5
+      napi-wasm: 1.1.0
     dev: true
     bundledDependencies:
       - napi-wasm
@@ -3668,7 +3709,7 @@ packages:
       '@unocss/core': 0.58.0
       '@unocss/rule-utils': 0.58.0
       gzip-size: 6.0.0
-      sirv: 2.0.3
+      sirv: 2.0.4
     dev: true
 
   /@unocss/nuxt@0.58.0(postcss@8.4.32)(rollup@2.79.1)(vite@5.0.10)(webpack@5.89.0):
@@ -3906,8 +3947,8 @@ packages:
       - supports-color
     dev: true
 
-  /@vite-pwa/nuxt@0.3.5(rollup@2.79.1)(vite@5.0.10)(workbox-build@7.0.0)(workbox-window@7.0.0):
-    resolution: {integrity: sha512-ighafr2qyLCRu6SS2+z2NYg/UWAVEJVetJTid8EQr3KgIrDCCfgfJKc3EEaiT7OF0M3/oppDcguemHkaKwfNEQ==, tarball: https://registry.npmmirror.com/@vite-pwa/nuxt/-/nuxt-0.3.5.tgz}
+  /@vite-pwa/nuxt@0.3.6(rollup@2.79.1)(vite@5.0.10)(workbox-build@7.0.0)(workbox-window@7.0.0):
+    resolution: {integrity: sha512-EEBiSUF0pbcFTLK8KpbkVb0YVNe9MKOHmaKE3siUJoeB5TZmCN8QqqPk9F5BsBEciy1JrxFtjCoZldLdxO2+0Q==, tarball: https://registry.npmmirror.com/@vite-pwa/nuxt/-/nuxt-0.3.6.tgz}
     dependencies:
       '@nuxt/kit': 3.8.2(rollup@2.79.1)
       pathe: 1.1.1
@@ -4966,6 +5007,13 @@ packages:
       restore-cursor: 4.0.0
     dev: true
 
+  /cli-progress@3.12.0:
+    resolution: {integrity: sha512-tRkV3HJ1ASwm19THiiLIXLO7Im7wlTuKnvkYaTkyoAPefqjNg7W7DHKUlGRxy9vxDvbyCYQkQozvptuMkGCg8A==, tarball: https://registry.npmmirror.com/cli-progress/-/cli-progress-3.12.0.tgz}
+    engines: {node: '>=4'}
+    dependencies:
+      string-width: 4.2.3
+    dev: true
+
   /cli-spinners@2.9.2:
     resolution: {integrity: sha512-ywqV+5MmyL4E7ybXgKys4DugZbX0FC6LnwrhjuykIjnK9k8OQacQ7axGKnjDXWNhns0xot3bZI5h55H8yo9cJg==, tarball: https://registry.npmmirror.com/cli-spinners/-/cli-spinners-2.9.2.tgz}
     engines: {node: '>=6'}
@@ -5575,6 +5623,11 @@ packages:
   /detect-indent@6.1.0:
     resolution: {integrity: sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA==, tarball: https://registry.npmmirror.com/detect-indent/-/detect-indent-6.1.0.tgz}
     engines: {node: '>=8'}
+    dev: true
+
+  /detect-indent@7.0.1:
+    resolution: {integrity: sha512-Mc7QhQ8s+cLrnUfU/Ji94vG/r8M26m8f++vyres4ZoojaRDpZ1eSIh/EpzLNwlWuvzSZ3UbDFspjFvTDXe6e/g==, tarball: https://registry.npmmirror.com/detect-indent/-/detect-indent-7.0.1.tgz}
+    engines: {node: '>=12.20'}
     dev: true
 
   /detect-libc@1.0.3:
@@ -8357,8 +8410,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /mrmime@1.0.1:
-    resolution: {integrity: sha512-hzzEagAgDyoU1Q6yg5uI+AorQgdvMCur3FcKf7NhMKWsaYg+RnbTyHRa/9IlLF9rf455MOCtcqqrQQ83pPP7Uw==, tarball: https://registry.npmmirror.com/mrmime/-/mrmime-1.0.1.tgz}
+  /mrmime@2.0.0:
+    resolution: {integrity: sha512-eu38+hdgojoyq63s+yTpN4XMBdt5l8HhMhc4VKLO9KM5caLIBvUm4thi7fFaxyTmCKeNnXZ5pAlBwCUnhA09uw==, tarball: https://registry.npmmirror.com/mrmime/-/mrmime-2.0.0.tgz}
     engines: {node: '>=10'}
     dev: true
 
@@ -8396,6 +8449,10 @@ packages:
 
   /nanopop@2.3.0:
     resolution: {integrity: sha512-fzN+T2K7/Ah25XU02MJkPZ5q4Tj5FpjmIYq4rvoHX4yb16HzFdCO6JxFFn5Y/oBhQ8no8fUZavnyIv9/+xkBBw==, tarball: https://registry.npmmirror.com/nanopop/-/nanopop-2.3.0.tgz}
+    dev: true
+
+  /napi-wasm@1.1.0:
+    resolution: {integrity: sha512-lHwIAJbmLSjF9VDRm9GoVOy9AGp3aIvkjv+Kvz9h16QR3uSVYH78PNQUnT2U4X53mhlnV2M7wrhibQ3GHicDmg==, tarball: https://registry.npmmirror.com/napi-wasm/-/napi-wasm-1.1.0.tgz}
     dev: true
 
   /natural-compare-lite@1.4.0:
@@ -9235,6 +9292,12 @@ packages:
   /pluralize@8.0.0:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==, tarball: https://registry.npmmirror.com/pluralize/-/pluralize-8.0.0.tgz}
     engines: {node: '>=4'}
+    dev: true
+
+  /pnpm@8.12.1:
+    resolution: {integrity: sha512-ZwXqGWattlhwU+bP5v3cN3+BBmIo2vc2xEkAEvRPL/G/DHE7uPMUX84OPvZpx8FfGaWawVeDiVHyNMF7gcplXQ==, tarball: https://registry.npmmirror.com/pnpm/-/pnpm-8.12.1.tgz}
+    engines: {node: '>=16.14'}
+    hasBin: true
     dev: true
 
   /postcss-calc@9.0.1(postcss@8.4.32):
@@ -10241,12 +10304,12 @@ packages:
       - supports-color
     dev: true
 
-  /sirv@2.0.3:
-    resolution: {integrity: sha512-O9jm9BsID1P+0HOi81VpXPoDxYP374pkOLzACAoyUQ/3OUVndNpsz6wMnY2z+yOxzbllCKZrM+9QrWsv4THnyA==, tarball: https://registry.npmmirror.com/sirv/-/sirv-2.0.3.tgz}
+  /sirv@2.0.4:
+    resolution: {integrity: sha512-94Bdh3cC2PKrbgSOUqTiGPWVZeSiXfKOVZNJniWoqrWrRkB1CJzBU3NEbiTsPcYy1lDsANA/THzS+9WBiy5nfQ==, tarball: https://registry.npmmirror.com/sirv/-/sirv-2.0.4.tgz}
     engines: {node: '>= 10'}
     dependencies:
       '@polka/url': 1.0.0-next.24
-      mrmime: 1.0.1
+      mrmime: 2.0.0
       totalist: 3.0.1
     dev: true
 
@@ -10667,6 +10730,27 @@ packages:
       minizlib: 2.1.2
       mkdirp: 1.0.4
       yallist: 4.0.0
+    dev: true
+
+  /taze@0.13.0:
+    resolution: {integrity: sha512-o17Y6miF+44sDJ7haRHTqZefTlGOaBSdDHRwRcrt+s3WeGSPBUtPSG18XNwToIXN//eh58hyYnyDwTnpYLp4sg==, tarball: https://registry.npmmirror.com/taze/-/taze-0.13.0.tgz}
+    hasBin: true
+    dependencies:
+      '@antfu/ni': 0.21.12
+      '@npmcli/config': 8.0.3
+      cli-progress: 3.12.0
+      deepmerge: 4.3.1
+      detect-indent: 7.0.1
+      execa: 8.0.1
+      pacote: 17.0.5
+      picocolors: 1.0.0
+      prompts: 2.4.2
+      semver: 7.5.4
+      unconfig: 0.3.11
+      yargs: 17.7.2
+    transitivePeerDependencies:
+      - bluebird
+      - supports-color
     dev: true
 
   /temp-dir@2.0.0:
@@ -11422,7 +11506,7 @@ packages:
       fs-extra: 11.2.0
       open: 9.1.0
       picocolors: 1.0.0
-      sirv: 2.0.3
+      sirv: 2.0.4
       vite: 5.0.10(@types/node@20.10.5)(sass@1.69.5)
     transitivePeerDependencies:
       - rollup
@@ -11687,6 +11771,10 @@ packages:
       '@vue/server-renderer': 3.3.13(vue@3.3.13)
       '@vue/shared': 3.3.13
       typescript: 5.3.3
+    dev: true
+
+  /walk-up-path@3.0.1:
+    resolution: {integrity: sha512-9YlCL/ynK3CTlrSRrDxZvUauLzAswPCrsaCgilqFevUYpeEW0/3ScEjaa3kbW/T0ghhkEr7mv+fpjqn1Y1YuTA==, tarball: https://registry.npmmirror.com/walk-up-path/-/walk-up-path-3.0.1.tgz}
     dev: true
 
   /warning@4.0.3:

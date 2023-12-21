@@ -17,7 +17,9 @@
     "nuxt",
     "nuxtjs",
     "antd",
-    "sider"
+    "sider",
+    "taze",
+    "esno"
   ],
   "files.associations": {
     "*.css": "postcss"
