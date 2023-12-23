@@ -51,9 +51,9 @@
     "sass": "^1.69.5",
     "taze": "^0.13.0",
     "typescript": "^5.3.3",
-    "unocss-preset-useful": "^0.3.5",
+    "unocss-preset-useful": "^0.3.7",
     "vue-draggable-plus": "^0.3.2",
-    "vue-tsc": "^1.8.25"
+    "vue-tsc": "^1.8.26"
   },
   "config": {
     "commitizen": {
