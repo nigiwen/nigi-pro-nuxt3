@@ -51,7 +51,7 @@ function onFinishFailed(_errorInfo: any) {
 <template>
   <div bg="#F0F1F5" h-full w-full flex class="bg-container" @wheel="onWheel">
     <div bg="#ffffff" m-auto h-150 w-250 flex flex-row overflow-hidden rounded-xl>
-      <div ref="el" w="1/2" overflow-auto>
+      <div ref="el" w="55%" overflow-auto>
         <article>
           <div>
             <div grid="~ cols-2 gap-2">
@@ -64,45 +64,52 @@ function onFinishFailed(_errorInfo: any) {
           </div>
         </article>
       </div>
-      <div w="1/2" m-auto>
-        <a-form
-          w-80%
-          :model="formState"
-          name="basic"
-          :label-col="{ span: 8 }"
-          :wrapper-col="{ span: 16 }"
-          autocomplete="off"
-          @finish="onFinish"
-          @finish-failed="onFinishFailed"
-        >
-          <a-form-item
-            label="Username"
-            name="username"
-            :rules="[{ required: true, message: 'Please input your username!' }]"
+      <div w="45%" m-auto>
+        <div flex flex-col gap-6>
+          <div m-l-14 flex-center gap-2>
+            <img src="/nuxt.svg" alt="log" h-14 w-14>
+            <h2 color="var(--site-text-color)" whitespace-nowrap text-8 font-700>
+              Nigi Pro
+            </h2>
+          </div>
+          <a-form
+            :model="formState"
+            name="basic"
+            :label-col="{ span: 7 }"
+            :wrapper-col="{ span: 14 }"
+            autocomplete="off"
+            @finish="onFinish"
+            @finish-failed="onFinishFailed"
           >
-            <a-input v-model:value="formState.username" />
-          </a-form-item>
+            <a-form-item
+              label="Username"
+              name="username"
+              :rules="[{ required: true, message: 'Please input your username!' }]"
+            >
+              <a-input v-model:value="formState.username" />
+            </a-form-item>
 
-          <a-form-item
-            label="Password"
-            name="password"
-            :rules="[{ required: true, message: 'Please input your password!' }]"
-          >
-            <a-input-password v-model:value="formState.password" />
-          </a-form-item>
+            <a-form-item
+              label="Password"
+              name="password"
+              :rules="[{ required: true, message: 'Please input your password!' }]"
+            >
+              <a-input-password v-model:value="formState.password" />
+            </a-form-item>
 
-          <a-form-item name="remember" :wrapper-col="{ offset: 8, span: 16 }">
-            <a-checkbox v-model:checked="formState.remember">
-              Remember me
-            </a-checkbox>
-          </a-form-item>
+            <a-form-item name="remember" :wrapper-col="{ offset: 7, span: 14 }">
+              <a-checkbox v-model:checked="formState.remember">
+                Remember me
+              </a-checkbox>
+            </a-form-item>
 
-          <a-form-item :wrapper-col="{ offset: 8, span: 16 }">
-            <a-button type="primary" html-type="submit">
-              Submit
-            </a-button>
-          </a-form-item>
-        </a-form>
+            <a-form-item :wrapper-col="{ offset: 7, span: 14 }">
+              <a-button type="primary" html-type="submit">
+                Submit
+              </a-button>
+            </a-form-item>
+          </a-form>
+        </div>
       </div>
     </div>
   </div>
@@ -125,5 +132,11 @@ function onFinishFailed(_errorInfo: any) {
   content: '';
   position: fixed;
   background: url(https://api.paugram.com/wallpaper/) center/cover;
+}
+.bg-container > div {
+  box-shadow:
+    0 0 10px rgba(0, 0, 0, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    0 8px 16px rgba(0, 0, 0, 0.3); /* 多层次阴影 */
 }
 </style>
