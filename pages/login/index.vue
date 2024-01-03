@@ -1,9 +1,13 @@
 <script setup lang='ts'>
 import { nanoid } from 'nanoid'
+import type { FormState } from '~/composables/user'
 
 definePageMeta({
   layout: false,
 })
+
+const router = useRouter()
+const { setNewName } = useUserStore()
 
 // 任何地方的滚轮都可以控制爆布区的滚动
 const el = ref<HTMLElement | null>(null)
@@ -28,23 +32,14 @@ function generateArray(cols: number, rows: number): string[][] {
 }
 const twoColumnsArray = useState('twoColumnsArray', () => generateArray(5, 2))
 
-interface FormState {
-  username: string
-  password: string
-  remember: boolean
-}
-
 const formState = reactive<FormState>({
   username: '',
   password: '',
   remember: true,
 })
-function onFinish(_values: any) {
-  // console.log('Success:', values)
-}
-
-function onFinishFailed(_errorInfo: any) {
-  // console.log('Failed:', errorInfo)
+function onFinish(values: FormState) {
+  setNewName(values)
+  router.push('/')
 }
 </script>
 
@@ -79,7 +74,6 @@ function onFinishFailed(_errorInfo: any) {
             :wrapper-col="{ span: 14 }"
             autocomplete="off"
             @finish="onFinish"
-            @finish-failed="onFinishFailed"
           >
             <a-form-item
               label="Username"

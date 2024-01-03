@@ -2,6 +2,9 @@
 import { useDraggable } from 'vue-draggable-plus'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue'
 
+const { removeName } = useUserStore()
+const router = useRouter()
+
 const selectedKeys = ref<string[]>(['1'])
 const [collapsed] = useToggle()
 
@@ -41,10 +44,15 @@ function siderTrigger() {
     },
   )
 }
+
+function loginOut() {
+  removeName()
+  router.push({ name: 'login' })
+}
 </script>
 
 <template>
-  <a-layout id="classic-layout" flex-row min-h="100vh" min-w="200">
+  <a-layout id="classic-layout" flex-row min-h="full" min-w="200">
     <a-layout-sider v-model:collapsed="collapsed" collapsible bg="#ffffff" :trigger="siderTrigger()">
       <div h-15 flex-center gap-1>
         <img src="/nuxt.svg" alt="log" h-8 w-8>
@@ -69,33 +77,77 @@ function siderTrigger() {
     </a-layout-sider>
     <a-layout>
       <a-layout-header bg="#ffffff" h-15 flex-y-center justify-between px-4>
-        <div w="7/10">
-          <div ref="tabListRef" class="tab-list">
-            <div
-              v-for="tab in tabList"
-              :key="tab.id"
-              class="tab-item"
-              :class="activeTab === tab.id ? 'tab-selected' : 'not-selected'"
-              @click="onTab(tab.id)"
-            >
-              <div z-2 leading-38px>
-                <UserOutlined class="tab-icon" />
-                {{ tab.label }}
+        <div class="tab-main">
+          <a-dropdown :trigger="['contextmenu']">
+            <div ref="tabListRef" class="tab-list">
+              <div
+                v-for="tab in tabList"
+                :key="tab.id"
+                class="tab-item"
+                :class="activeTab === tab.id ? 'tab-selected' : 'not-selected'"
+                @click="onTab(tab.id)"
+              >
+                <div z-2 leading-38px>
+                  <UserOutlined class="tab-icon" />
+                  {{ tab.label }}
+                </div>
               </div>
             </div>
+            <template #overlay>
+              <a-menu>
+                <a-menu-item key="1">
+                  1st menu item
+                </a-menu-item>
+                <a-menu-item key="2">
+                  2nd menu item
+                </a-menu-item>
+                <a-menu-item key="3">
+                  3rd menu item
+                </a-menu-item>
+              </a-menu>
+            </template>
+          </a-dropdown>
+          <div class="tab-tool">
+            <a-dropdown placement="bottomLeft">
+              <div bg="#E6F4FF" color="#1677ff" h-7 w-7 flex-center cursor-pointer rounded-2 @click.prevent>
+                <DownOutlined />
+              </div>
+              <template #overlay>
+                <a-menu>
+                  <a-menu-item>
+                    <a href="javascript:;">1st menu item</a>
+                  </a-menu-item>
+                  <a-menu-item>
+                    <a href="javascript:;">2nd menu item</a>
+                  </a-menu-item>
+                  <a-menu-item>
+                    <a href="javascript:;">3rd menu item</a>
+                  </a-menu-item>
+                </a-menu>
+              </template>
+            </a-dropdown>
           </div>
         </div>
         <div>
-          <div flex-center gap-2>
-            <div text-base font-450>
-              Nigi Wen
+          <a-dropdown>
+            <div flex-center cursor-pointer gap-2>
+              <div text-base font-450>
+                Nigi Wen
+              </div>
+              <a-avatar bg="#1677FF" size="large">
+                <template #icon>
+                  <UserOutlined />
+                </template>
+              </a-avatar>
             </div>
-            <a-avatar bg="#1677FF" size="large">
-              <template #icon>
-                <UserOutlined />
-              </template>
-            </a-avatar>
-          </div>
+            <template #overlay>
+              <a-menu>
+                <a-menu-item @click="loginOut">
+                  <a href="javascript:;" flex-center gap-1><PoweroffOutlined /> 退出登录</a>
+                </a-menu-item>
+              </a-menu>
+            </template>
+          </a-dropdown>
         </div>
       </a-layout-header>
       <a-layout-content bg="#ffffff" m="t-6 x-4 b-0" min-h-70 p-6>
@@ -125,133 +177,137 @@ function siderTrigger() {
   }
 
   // 页签
-  .tab-list {
+  .tab-main {
     $tab-height: 38px;
     $active-color: #e6f4ff;
     $default-color: #ffffff;
-
-    display: flex;
-    position: relative;
-    z-index: 2;
-    border-radius: 12px 12px 0 0;
-    background-color: $default-color;
-    overflow: hidden;
     transform: translateY(11px);
-
-    // 页签样式
-    .tab-item {
-      padding: 0 20px;
-      min-width: 100px;
-      height: $tab-height;
+    display: flex;
+    align-items: center;
+    height: $tab-height;
+    gap: 8px;
+    .tab-list {
       display: flex;
-      justify-content: center;
-      align-items: center;
       position: relative;
-      cursor: pointer;
-
-      &:last-child {
-        &.tab-selected {
-          box-shadow:
-            0 0 0 0,
-            -19px 14px 0 0 $active-color;
-        }
-
-        &:after {
-          display: none;
-        }
-      }
-
-      &:first-child {
-        &.tab-selected {
-          box-shadow:
-            19px 14px 0 0 $active-color,
-            0 0 0 0;
-        }
-
-        &:before {
-          display: none;
-        }
-      }
-    }
-
-    // 选中的页签样式
-    .tab-selected {
-      z-index: -1;
-      opacity: 1;
-      background: $active-color;
+      z-index: 2;
       border-radius: 12px 12px 0 0;
-      color: #1677ff;
-      box-shadow:
-        19px 14px 0 $active-color,
-        -19px 14px 0 0 $active-color;
-
-      &::before {
-        content: '';
-        position: absolute;
-        left: -6px;
-        bottom: 0;
-        width: 12px;
+      background-color: $default-color;
+      overflow: hidden;
+      // 页签样式
+      .tab-item {
+        padding: 0 20px;
+        min-width: 100px;
         height: $tab-height;
-        border-top-left-radius: 12px;
-        background-color: $active-color;
-        transform: skewX(-15deg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        cursor: pointer;
+
+        &:last-child {
+          &.tab-selected {
+            box-shadow:
+              0 0 0 0,
+              -19px 14px 0 0 $active-color;
+          }
+
+          &:after {
+            display: none;
+          }
+        }
+
+        &:first-child {
+          &.tab-selected {
+            box-shadow:
+              19px 14px 0 0 $active-color,
+              0 0 0 0;
+          }
+
+          &:before {
+            display: none;
+          }
+        }
       }
 
-      &::after {
-        content: '';
-        position: absolute;
-        right: -6px;
-        bottom: 0;
-        width: 12px;
-        height: $tab-height;
-        border-top-right-radius: 12px;
-        background-color: $active-color;
-        transform: skewX(15deg);
-      }
-    }
+      // 选中的页签样式
+      .tab-selected {
+        z-index: -1;
+        opacity: 1;
+        background: $active-color;
+        border-radius: 12px 12px 0 0;
+        color: #1677ff;
+        box-shadow:
+          19px 14px 0 $active-color,
+          -19px 14px 0 0 $active-color;
 
-    // 未选中的页签样式
-    .not-selected {
-      color: #a0a0a0;
-      &::before {
-        content: '';
-        position: absolute;
-        left: 6px;
-        bottom: 0;
-        width: 12px;
-        height: $tab-height;
-        background: $default-color;
-        border-bottom-left-radius: 12px;
-        transform: skewX(15deg);
+        &::before {
+          content: '';
+          position: absolute;
+          left: -6px;
+          bottom: 0;
+          width: 12px;
+          height: $tab-height;
+          border-top-left-radius: 12px;
+          background-color: $active-color;
+          transform: skewX(-15deg);
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          right: -6px;
+          bottom: 0;
+          width: 12px;
+          height: $tab-height;
+          border-top-right-radius: 12px;
+          background-color: $active-color;
+          transform: skewX(15deg);
+        }
       }
 
-      &::after {
-        content: '';
-        position: absolute;
-        right: 6px;
-        bottom: 0;
-        width: 12px;
-        height: $tab-height;
-        background: $default-color;
-        border-bottom-right-radius: 12px;
-        transform: skewX(-15deg);
-        z-index: 1;
-      }
-    }
+      // 未选中的页签样式
+      .not-selected {
+        color: #a0a0a0;
+        &::before {
+          content: '';
+          position: absolute;
+          left: 6px;
+          bottom: 0;
+          width: 12px;
+          height: $tab-height;
+          background: $default-color;
+          border-bottom-left-radius: 12px;
+          transform: skewX(15deg);
+        }
 
-    // 拖拽出来的页签样式
-    .tabs-sortable-drag {
-      background-color: #ffffff !important;
-      border-radius: 6px !important;
-      box-shadow: initial !important;
-      &::after {
-        display: none !important;
+        &::after {
+          content: '';
+          position: absolute;
+          right: 6px;
+          bottom: 0;
+          width: 12px;
+          height: $tab-height;
+          background: $default-color;
+          border-bottom-right-radius: 12px;
+          transform: skewX(-15deg);
+          z-index: 1;
+        }
       }
-      &::before {
-        display: none !important;
-      }
-      &.tab-selected {
-        background-color: $active-color !important;
+
+      // 拖拽出来的页签样式
+      .tabs-sortable-drag {
+        background-color: #ffffff !important;
+        border-radius: 6px !important;
+        box-shadow: initial !important;
+        &::after {
+          display: none !important;
+        }
+        &::before {
+          display: none !important;
+        }
+        &.tab-selected {
+          background-color: $active-color !important;
+        }
       }
     }
   }
