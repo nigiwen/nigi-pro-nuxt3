@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     '@ant-design-vue/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
+    'nuxt-module-eslint-config',
   ],
 
   experimental: {
@@ -60,5 +61,14 @@ export default defineNuxtConfig({
 
   devtools: {
     enabled: true,
+  },
+
+  features: {
+    // For UnoCSS
+    inlineStyles: false,
+  },
+
+  eslintConfig: {
+    setup: false,
   },
 })
