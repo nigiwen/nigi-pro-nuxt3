@@ -80,7 +80,7 @@ function onFinish(values: FormState) {
               name="username"
               :rules="[{ required: true, message: 'Please input your username!' }]"
             >
-              <a-input v-model:value="formState.username" />
+              <a-input v-model:value="formState.username" bg-transparent />
             </a-form-item>
 
             <a-form-item
@@ -88,7 +88,7 @@ function onFinish(values: FormState) {
               name="password"
               :rules="[{ required: true, message: 'Please input your password!' }]"
             >
-              <a-input-password v-model:value="formState.password" />
+              <a-input-password v-model:value="formState.password" style="background: transparent;" bg-transparent />
             </a-form-item>
 
             <a-form-item name="remember" :wrapper-col="{ offset: 7, span: 14 }">
@@ -98,7 +98,7 @@ function onFinish(values: FormState) {
             </a-form-item>
 
             <a-form-item :wrapper-col="{ offset: 7, span: 14 }">
-              <a-button type="primary" html-type="submit">
+              <a-button type="primary" ghost html-type="submit">
                 Submit
               </a-button>
             </a-form-item>
