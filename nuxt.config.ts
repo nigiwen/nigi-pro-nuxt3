@@ -32,7 +32,6 @@ export default defineNuxtConfig({
         { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
         { rel: 'icon', type: 'image/svg+xml', href: '/nuxt.svg' },
         { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
-        { rel: 'stylesheet', href: '/css/antd.css' },
       ],
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -40,6 +39,21 @@ export default defineNuxtConfig({
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
       ],
     },
+  },
+
+  vite: {
+    resolve: {
+      alias: {
+        'ant-design-vue/dist': 'ant-design-vue/dist',
+        'ant-design-vue/es': 'ant-design-vue/es',
+        'ant-design-vue/lib': 'ant-design-vue/es',
+        'ant-design-vue': 'ant-design-vue/es',
+      },
+    },
+  },
+
+  antd: {
+    extractStyle: true,
   },
 
   pwa,

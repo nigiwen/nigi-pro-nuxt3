@@ -1,9 +1,11 @@
 <script setup lang='ts'>
+import type { Dayjs } from 'dayjs'
 
+const value = ref<Dayjs>()
 </script>
 
 <template>
-  be...1
+  <a-date-picker v-model:value="value" />
 </template>
 
 <style scoped lang='scss'>
