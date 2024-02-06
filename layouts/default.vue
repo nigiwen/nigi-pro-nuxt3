@@ -1,11 +1,6 @@
 <script lang="ts" setup>
 import { useDraggable } from 'vue-draggable-plus'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue'
-import zhCN from 'ant-design-vue/es/locale/zh_CN'
-import dayjs from 'dayjs'
-import 'dayjs/locale/zh-cn'
-
-dayjs.locale('zh-cn')
 
 const { removeName } = useUserStore()
 const router = useRouter()
@@ -57,114 +52,112 @@ function loginOut() {
 </script>
 
 <template>
-  <a-config-provider :locale="zhCN">
-    <a-layout id="classic-layout" flex-row min-h="full" min-w="200">
-      <a-layout-sider v-model:collapsed="collapsed" collapsible bg="#ffffff" :trigger="siderTrigger()">
-        <div h-15 flex-center gap-1>
-          <img src="/nuxt.svg" alt="log" h-8 w-8>
-          <h2 v-if="!collapsed" color="var(--site-text-color)" whitespace-nowrap text-5 font-700>
-            Nigi Pro
-          </h2>
-        </div>
-        <a-menu v-model:selectedKeys="selectedKeys" theme="light" mode="inline" border-0>
-          <a-menu-item key="1">
-            <UserOutlined />
-            <span>nav 1</span>
-          </a-menu-item>
-          <a-menu-item key="2">
-            <VideoCameraOutlined />
-            <span>nav 2</span>
-          </a-menu-item>
-          <a-menu-item key="3">
-            <UploadOutlined />
-            <span>nav 3</span>
-          </a-menu-item>
-        </a-menu>
-      </a-layout-sider>
-      <a-layout>
-        <a-layout-header bg="#ffffff" h-15 flex-y-center justify-between px-4>
-          <div class="tab-main">
-            <a-dropdown :trigger="['contextmenu']">
-              <div ref="tabListRef" class="tab-list">
-                <div
-                  v-for="tab in tabList"
-                  :key="tab.id"
-                  class="tab-item"
-                  :class="activeTab === tab.id ? 'tab-selected' : 'not-selected'"
-                  @click="onTab(tab.id)"
-                >
-                  <div z-2 leading-38px>
-                    <UserOutlined class="tab-icon" />
-                    {{ tab.label }}
-                  </div>
+  <a-layout id="classic-layout" flex-row min-h="full" min-w="200">
+    <a-layout-sider v-model:collapsed="collapsed" collapsible bg="#ffffff" :trigger="siderTrigger()">
+      <div h-15 flex-center gap-1>
+        <img src="/nuxt.svg" alt="log" h-8 w-8>
+        <h2 v-if="!collapsed" color="var(--site-text-color)" whitespace-nowrap text-5 font-700>
+          Nigi Pro
+        </h2>
+      </div>
+      <a-menu v-model:selectedKeys="selectedKeys" theme="light" mode="inline" border-0>
+        <a-menu-item key="1">
+          <UserOutlined />
+          <span>nav 1</span>
+        </a-menu-item>
+        <a-menu-item key="2">
+          <VideoCameraOutlined />
+          <span>nav 2</span>
+        </a-menu-item>
+        <a-menu-item key="3">
+          <UploadOutlined />
+          <span>nav 3</span>
+        </a-menu-item>
+      </a-menu>
+    </a-layout-sider>
+    <a-layout>
+      <a-layout-header bg="#ffffff" h-15 flex-y-center justify-between px-4>
+        <div class="tab-main">
+          <a-dropdown :trigger="['contextmenu']">
+            <div ref="tabListRef" class="tab-list">
+              <div
+                v-for="tab in tabList"
+                :key="tab.id"
+                class="tab-item"
+                :class="activeTab === tab.id ? 'tab-selected' : 'not-selected'"
+                @click="onTab(tab.id)"
+              >
+                <div z-2 leading-38px>
+                  <UserOutlined class="tab-icon" />
+                  {{ tab.label }}
                 </div>
               </div>
-              <template #overlay>
-                <a-menu>
-                  <a-menu-item key="1">
-                    1st menu item
-                  </a-menu-item>
-                  <a-menu-item key="2">
-                    2nd menu item
-                  </a-menu-item>
-                  <a-menu-item key="3">
-                    3rd menu item
-                  </a-menu-item>
-                </a-menu>
-              </template>
-            </a-dropdown>
-            <div class="tab-tool">
-              <a-dropdown placement="bottomLeft">
-                <div bg="#E6F4FF" color="#1677ff" h-7 w-7 flex-center cursor-pointer rounded-2 @click.prevent>
-                  <DownOutlined />
-                </div>
-                <template #overlay>
-                  <a-menu>
-                    <a-menu-item>
-                      <a href="javascript:;">1st menu item</a>
-                    </a-menu-item>
-                    <a-menu-item>
-                      <a href="javascript:;">2nd menu item</a>
-                    </a-menu-item>
-                    <a-menu-item>
-                      <a href="javascript:;">3rd menu item</a>
-                    </a-menu-item>
-                  </a-menu>
-                </template>
-              </a-dropdown>
             </div>
-          </div>
-          <div>
-            <a-dropdown>
-              <div flex-center cursor-pointer gap-2>
-                <div text-base font-450>
-                  Nigi Wen
-                </div>
-                <a-avatar bg="#1677FF" size="large">
-                  <template #icon>
-                    <UserOutlined />
-                  </template>
-                </a-avatar>
+            <template #overlay>
+              <a-menu>
+                <a-menu-item key="1">
+                  1st menu item
+                </a-menu-item>
+                <a-menu-item key="2">
+                  2nd menu item
+                </a-menu-item>
+                <a-menu-item key="3">
+                  3rd menu item
+                </a-menu-item>
+              </a-menu>
+            </template>
+          </a-dropdown>
+          <div class="tab-tool">
+            <a-dropdown placement="bottomLeft">
+              <div bg="#E6F4FF" color="#1677ff" h-7 w-7 flex-center cursor-pointer rounded-2 @click.prevent>
+                <DownOutlined />
               </div>
               <template #overlay>
                 <a-menu>
-                  <a-menu-item @click="loginOut">
-                    <a href="javascript:;" flex-center gap-1><PoweroffOutlined /> 退出登录</a>
+                  <a-menu-item>
+                    <a href="javascript:;">1st menu item</a>
+                  </a-menu-item>
+                  <a-menu-item>
+                    <a href="javascript:;">2nd menu item</a>
+                  </a-menu-item>
+                  <a-menu-item>
+                    <a href="javascript:;">3rd menu item</a>
                   </a-menu-item>
                 </a-menu>
               </template>
             </a-dropdown>
           </div>
-        </a-layout-header>
-        <a-layout-content bg="#ffffff" m="t-6 x-4 b-0" min-h-70 p-6>
-          <slot />
-        </a-layout-content>
-        <a-layout-footer p-x-12 p-y-3 text-center>
-          Nigi Pro ©2024 Created by wen403
-        </a-layout-footer>
-      </a-layout>
+        </div>
+        <div>
+          <a-dropdown>
+            <div flex-center cursor-pointer gap-2>
+              <div text-base font-450>
+                Nigi Wen
+              </div>
+              <a-avatar bg="#1677FF" size="large">
+                <template #icon>
+                  <UserOutlined />
+                </template>
+              </a-avatar>
+            </div>
+            <template #overlay>
+              <a-menu>
+                <a-menu-item @click="loginOut">
+                  <a href="javascript:;" flex-center gap-1><PoweroffOutlined /> 退出登录</a>
+                </a-menu-item>
+              </a-menu>
+            </template>
+          </a-dropdown>
+        </div>
+      </a-layout-header>
+      <a-layout-content bg="#ffffff" m="t-6 x-4 b-0" min-h-70 p-6>
+        <slot />
+      </a-layout-content>
+      <a-layout-footer p-x-12 p-y-3 text-center>
+        Nigi Pro ©2024 Created by wen403
+      </a-layout-footer>
     </a-layout>
-  </a-config-provider>
+  </a-layout>
 </template>
 
 <style scoped lang="scss">
